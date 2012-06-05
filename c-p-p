@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import canaima_primeros_pasos.main
+canaima_primeros_pasos.main.main()
