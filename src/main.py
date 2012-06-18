@@ -45,6 +45,7 @@ class frmMain(gtk.Window):
         self.visor.set_size_request(590, 280)
         self.visor.connect("navigation-requested", self.on_navigation_requested)
         self.add(self.visor)
+        self.face = "/usr/share/pixmaps/faces/leaf.jpg"
         
         path = os.path.realpath(os.path.join(os.path.dirname(__file__), 
                 'data/usuario.html'))
