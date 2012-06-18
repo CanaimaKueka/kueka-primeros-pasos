@@ -1,0 +1,18 @@
+Source: canaima-primeros-pasos
+Section: unknown
+Priority: extra
+Maintainer: William Abrahan Cabrera Reyes <cabrerawilliam@gmail.com>
+Uploaders: William Abrahan Cabrera Reyes <cabrerawilliam@gmail.com>
+Build-Depends: cdbs, debhelper (>= 7.0.50~)
+Standards-Version: 3.9.1
+#Homepage: http://canaima.softwarelibre.gob.ve/
+#Vcs-Git: git://gitorious.org/canaima-gnu-linux/canaima-primeros-pasos.git
+#Vcs-Browser: git://gitorious.org/canaima-gnu-linux/canaima-primeros-pasos.git
+
+Package: canaima-primeros-pasos
+Architecture: all
+Depends: python-webkit, python-gtk2, ${shlibs:Depends}, ${misc:Depends}
+Description: Primeros pasos con Canaima GNU/Linux.
+ Configura y asiste al usuario en sus primeras actividades con su distribución
+ Canaima GNU/Linux, de acuerdo a ciertas reglas y condiciones, usa tasksel
+ para instalar aplicaciones.
