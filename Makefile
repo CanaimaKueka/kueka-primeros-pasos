@@ -92,15 +92,15 @@ install:
 	install -d $(DESTDIR)/usr/share/canaima-primeros-pasos/data
 	
 	install -m 755 src/c-p-p $(DESTDIR)/usr/bin/c-p-p
-    install -m 755 src/*.py $(DESTDIR)/usr/share/canaima-primeros-pasos/
-    install -m 644 src/data/* $(DESTDIR)/usr/share/canaima-primeros-pasos/data/
-    
+	install -m 755 src/*.py $(DESTDIR)/usr/share/canaima-primeros-pasos/
+	install -m 644 src/data/* $(DESTDIR)/usr/share/canaima-primeros-pasos/data/
+	
 uninstall:
 
 # Aquí se deshace lo que se hizo en el install, borrando exactamente lo que
 # se creó en el install
-    rm -rf $(DESTDIR)/usr/bin/c-p-p
-    rm -rf $(DESTDIR)/usr/share/canaima-primeros-pasos
+	rm -rf $(DESTDIR)/usr/bin/c-p-p
+	rm -rf $(DESTDIR)/usr/share/canaima-primeros-pasos
 
 clean:
 
