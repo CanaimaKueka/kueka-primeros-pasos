@@ -150,8 +150,6 @@ class frmMain(gtk.Window):
             elif self.passroot1 != self.passroot2:
                 self.mensaje("Las contraseñas de root no coinciden")
             else:
-                #self.thread = threading.Thread(target=self.aceptar, args=())
-                #self.thread.start()
                 self.visor.execute_script("document.getElementById('espera').style.visibility = 'visible';")
                 time.sleep(1)
                 self.aceptar()
@@ -225,7 +223,7 @@ class frmMain(gtk.Window):
         os.system('mv {0} /home/{1}/.face'.format(self.face, usr))
         
     def hostname(self):
-        cmd = 'echo "{0}" > /target/etc/hostname'.format(self.maquina)
+        cmd = 'echo "{0}" > /etc/hostname'.format(self.maquina)
         print cmd
         os.system('{0}'.format(cmd))
 
@@ -235,7 +233,7 @@ class frmMain(gtk.Window):
         cmd = cmd + 'ff00::0\t\tip6-mcastprefix'
         cmd = cmd + 'ff02::1\t\tip6-allnodes'
         cmd = cmd + 'ff02::2\t\tip6-allrouters'
-        cmd = cmd + 'ff02::3\t\tip6-allhosts" > /target/etc/hosts    '
+        cmd = cmd + 'ff02::3\t\tip6-allhosts" > /etc/hosts    '
         print cmd
         os.system('{0}'.format(cmd))        
 def main():
