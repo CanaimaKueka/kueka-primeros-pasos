@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#!/bin/sh
 
-import canaima_primeros_pasos.main
-canaima_primeros_pasos.main.main()
+cd /usr/share/canaima-primeros-pasos
+gksu "python main.py"
