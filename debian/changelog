@@ -3,5 +3,7 @@ canaima-primeros-pasos (1.0) unstable; urgency=low
   * Versión inicial de canaima-primeros-pasos para Canaima GNU/Linux
   * [aabd04e] agregando archivos necesarios para crear paquete
   * [f0da4f8] agregando archivos necesarios para crear paquete
+  * [0664d06] Agregando los logs a los ignores del git
+  * [7b90bf2] agregando archivos necesarios para crear paquete
 
- -- William Abrahan Cabrera Reyes <cabrerawilliam@gmail.com>  Mon, 18 Jun 2012 14:36:59 -0430
+ -- William Abrahan Cabrera Reyes <cabrerawilliam@gmail.com>  Mon, 18 Jun 2012 14:40:52 -0430
