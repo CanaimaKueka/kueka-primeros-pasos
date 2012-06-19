@@ -88,9 +88,11 @@ install:
 	# cp -r scripts/canaima-bienvenido.sh $(DESTDIR)/usr/bin/nombre-p
 
 	install -d $(DESTDIR)/usr/bin
+	install -d $(DESTDIR)/etc/init.d
 	install -d $(DESTDIR)/usr/share/canaima-primeros-pasos
 	install -d $(DESTDIR)/usr/share/canaima-primeros-pasos/data
 	
+	install -m 755 src/servicio/c-p-p $(DESTDIR)/etc/init.d/c-p-p
 	install -m 755 src/c-p-p $(DESTDIR)/usr/bin/c-p-p
 	install -m 755 src/*.py $(DESTDIR)/usr/share/canaima-primeros-pasos/
 	install -m 644 src/data/* $(DESTDIR)/usr/share/canaima-primeros-pasos/data/
@@ -99,6 +101,7 @@ uninstall:
 
 # Aquí se deshace lo que se hizo en el install, borrando exactamente lo que
 # se creó en el install
+	rm -rf $(DESTDIR)/etc/init.d/c-p-p
 	rm -rf $(DESTDIR)/usr/bin/c-p-p
 	rm -rf $(DESTDIR)/usr/share/canaima-primeros-pasos
 

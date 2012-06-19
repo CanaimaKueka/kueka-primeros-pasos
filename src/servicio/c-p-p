@@ -1,0 +1,27 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          c-p-p
+# Should-Start:      $x-display-manager gdm
+# Required-Start:    hostname $local_fs
+# Default-Start:     2 3 4 5
+# Short-Description: Canaima Primeros Pasos
+# Description:       Script de inicio para Canaima Primeros Pasos
+### END INIT INFO
+#
+# Author:       William Cabrera <cabrerawilliam@gmail.com>
+#
+
+/etc/init.d/gdm3 stop
+DISPLAY=:1
+export DISPLAY
+/usr/bin/Xorg :1 &
+/usr/bin/metacity --display=:1 &
+
+c-p-p
+
+/usr/bin/killall -9 metacity
+sleep 1
+/usr/bin/killall -9 Xorg
+sleep 1
+/etc/init.d/gdm3 restart
+#gdm3

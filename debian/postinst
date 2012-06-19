@@ -20,14 +20,14 @@ case ${1} in
 
         # Aquí va lo que el paquete debe configurar/crear/borrar después de
         # instalarse. Lenguaje a usar: BASH.
-
+        update-rc.d c-p-p defaults
 	;;
 
         abort-upgrade|abort-remove|abort-deconfigure)
 
         # Aquí va lo que el paquete debe configurar/crear/borrar en caso
         # de abortarse la instalación. Lenguaje a usar: BASH.
-
+        update-rc.d c-p-p remove
         ;;
 
         *)

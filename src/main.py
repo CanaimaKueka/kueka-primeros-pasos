@@ -8,7 +8,7 @@ import webkit
 import os
 import re
 import time
-import threading
+#import threading
 import webcam
 
 SEGURIDAD = {
