@@ -1,3 +1,10 @@
+canaima-primeros-pasos (1.2) unstable; urgency=low
+
+  * [5b37312] modificacion de prueba, no tomar en cuenta
+  * [3ac1685] Devolviendo cambio anterior.
+
+ -- William Abrahan Cabrera Reyes <cabrerawilliam@gmail.com>  Thu, 21 Jun 2012 14:16:40 -0430
+
 canaima-primeros-pasos (1.1) unstable; urgency=low
 
   * [434154d] Corregido Script inicial
