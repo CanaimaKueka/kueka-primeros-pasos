@@ -186,6 +186,7 @@ class frmMain(gtk.Window):
         w.write('creado')
         self.crear_usuario()
         self.hostname()
+        os.system('aptitude purge canaima-primeros-pasos --assume-yes')
         w.close()
         gtk.main_quit()
         
