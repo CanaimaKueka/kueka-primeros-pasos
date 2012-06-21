@@ -1,3 +1,15 @@
+canaima-primeros-pasos (1.1) unstable; urgency=low
+
+  * [434154d] Corregido Script inicial
+  * [fa90733] Error Corregido: intento de copia a un archivo
+    inexistente.
+  * [b363ef1] Agregando avatar por defecto.
+  * [d5b233d] Agregado script de inicio de la aplicación
+  * [91d832a] [ canaima-desarrollador ] Los siguientes archivos han sido
+    modificados/añadidos: main.py
+
+ -- William Abrahan Cabrera Reyes <cabrerawilliam@gmail.com>  Thu, 21 Jun 2012 14:07:21 -0430
+
 canaima-primeros-pasos (1.0) unstable; urgency=low
 
   * Versión inicial de canaima-primeros-pasos para Canaima GNU/Linux
