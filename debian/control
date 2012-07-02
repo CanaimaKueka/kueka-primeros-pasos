@@ -11,7 +11,7 @@ Standards-Version: 3.9.1
 
 Package: canaima-primeros-pasos
 Architecture: all
-Depends: python-webkit, python-gtk2, ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Primeros pasos con Canaima GNU/Linux.
  Configura y asiste al usuario en sus primeras actividades con su distribución
  Canaima GNU/Linux, de acuerdo a ciertas reglas y condiciones, usa tasksel
