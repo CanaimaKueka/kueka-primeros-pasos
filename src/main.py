@@ -101,10 +101,12 @@ class frmMain(gtk.Window):
             self.usuario = usuario
             self.visor.execute_script("document.getElementById('usuario').value = '{0}';".format(usuario.lower()))
             self.visor.execute_script("document.getElementById('maquina').value = '{0}-pc';".format(usuario.lower()))
+            self.maquina = '{0}-pc'.format(usuario.lower())
             return True
         elif scheme == 'chgusuario':
             self.usuario = path.lower()
             self.visor.execute_script("document.getElementById('maquina').value = '{0}-pc';".format(path.lower()))
+            self.maquina = '{0}-pc'.format(path.lower())
             return True
         elif scheme == 'chguserpass1':
             self.pass1 = path
@@ -229,29 +231,29 @@ class frmMain(gtk.Window):
     def hostname(self):
         cmd = 'echo "{0}" > /etc/hostname'.format(self.maquina)
         os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
 
-        cmd = 'echo "127.0.0.1\t\t{0}\t\tlocalhost > /etc/hosts'.format(self.maquina)
+        cmd = 'echo 127.0.0.1\t\t{0}\t\tlocalhost > /etc/hosts'.format(self.maquina)
         os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
         cmd = 'echo ::1\t\tlocalhost\t\tip6-localhost ip6-loopback >> /etc/hosts'
         os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
         cmd = 'echo fe00::0\t\tip6-localnet >> /etc/hosts'
         os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
         cmd = 'echo ff00::0\t\tip6-mcastprefix >> /etc/hosts'
         os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
         cmd = 'echo ff02::1\t\tip6-allnodes >> /etc/hosts'
         os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
         cmd = 'echo ff02::2\t\tip6-allrouters >> /etc/hosts'
         os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
         cmd = 'echo ff02::3\t\tip6-allhosts" >> /etc/hosts'
         os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
         
         os.system('/etc/init.d/hostname.sh restart')
         
