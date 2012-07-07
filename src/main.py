@@ -229,7 +229,7 @@ class frmMain(gtk.Window):
         os.system('chmod 644 /home/{0}/.face'.format(usr))
         
     def hostname(self):
-        cmd = 'echo "{0}" > /etc/hostname'.format(self.maquina)
+        cmd = 'echo {0} > /etc/hostname'.format(self.maquina)
         os.system('{0}'.format(cmd))
         os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
 
@@ -255,7 +255,7 @@ class frmMain(gtk.Window):
         os.system('{0}'.format(cmd))
         os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
         
-        os.system('/etc/init.d/hostname.sh restart')
+        os.system('/etc/init.d/hostname.sh start')
         
 def main():
     '''
