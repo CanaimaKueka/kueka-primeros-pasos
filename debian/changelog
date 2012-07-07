@@ -1,3 +1,9 @@
+canaima-primeros-pasos (1.2-4) unstable; urgency=low
+
+  * [06e13ce] corrigiendo errores para el cambio del hostname
+
+ -- William Abrahan Cabrera Reyes <cabrerawilliam@gmail.com>  Sat, 07 Jul 2012 06:01:18 -0430
+
 canaima-primeros-pasos (1.2-3) unstable; urgency=low
 
   * [a7d95ab] corrigiendo errores para el cambio del hostname
