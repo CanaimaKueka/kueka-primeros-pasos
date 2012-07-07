@@ -1,3 +1,10 @@
+canaima-primeros-pasos (1.2-2) unstable; urgency=low
+
+  * [8a1b95b] corrigiendo errores para el cambio del hostname y la
+    creación del avatar del usuario
+
+ -- William Abrahan Cabrera Reyes <cabrerawilliam@gmail.com>  Sat, 07 Jul 2012 04:46:21 -0430
+
 canaima-primeros-pasos (1.2-1) unstable; urgency=low
 
   * [5b37312] modificacion de prueba, no tomar en cuenta
