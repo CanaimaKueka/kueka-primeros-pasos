@@ -223,21 +223,38 @@ class frmMain(gtk.Window):
         os.system('aptitude purge canaima-instalador --assume-yes')
         
         os.system('mv {0} /home/{1}/.face'.format(self.face, usr))
+        os.system('chown {0}:{0} /home/{0}/.face'.format(usr))
+        os.system('chmod 644 /home/{0}/.face'.format(usr))
         
     def hostname(self):
         cmd = 'echo "{0}" > /etc/hostname'.format(self.maquina)
-        print cmd
         os.system('{0}'.format(cmd))
+        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
 
-        cmd = 'echo "127.0.0.1\t\t{0}\t\tlocalhost'.format(self.maquina)
-        cmd = cmd + '::1\t\tlocalhost\t\tip6-localhost ip6-loopback'
-        cmd = cmd + 'fe00::0\t\tip6-localnet'
-        cmd = cmd + 'ff00::0\t\tip6-mcastprefix'
-        cmd = cmd + 'ff02::1\t\tip6-allnodes'
-        cmd = cmd + 'ff02::2\t\tip6-allrouters'
-        cmd = cmd + 'ff02::3\t\tip6-allhosts" > /etc/hosts    '
-        print cmd
-        os.system('{0}'.format(cmd))        
+        cmd = 'echo "127.0.0.1\t\t{0}\t\tlocalhost > /etc/hosts'.format(self.maquina)
+        os.system('{0}'.format(cmd))
+        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        cmd = 'echo ::1\t\tlocalhost\t\tip6-localhost ip6-loopback >> /etc/hosts'
+        os.system('{0}'.format(cmd))
+        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        cmd = 'echo fe00::0\t\tip6-localnet >> /etc/hosts'
+        os.system('{0}'.format(cmd))
+        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        cmd = 'echo ff00::0\t\tip6-mcastprefix >> /etc/hosts'
+        os.system('{0}'.format(cmd))
+        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        cmd = 'echo ff02::1\t\tip6-allnodes >> /etc/hosts'
+        os.system('{0}'.format(cmd))
+        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        cmd = 'echo ff02::2\t\tip6-allrouters >> /etc/hosts'
+        os.system('{0}'.format(cmd))
+        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        cmd = 'echo ff02::3\t\tip6-allhosts" >> /etc/hosts'
+        os.system('{0}'.format(cmd))
+        os.system('echo {0} >> /var/log-c-p-p.txt'.format(cmd))
+        
+        os.system('/etc/init.d/hostname.sh restart')
+        
 def main():
     '''
         Inicia la parte gráfica
