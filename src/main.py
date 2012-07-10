@@ -134,6 +134,9 @@ class frmMain(gtk.Window):
                 color = '#eeaaaa'
             self.visor.execute_script("document.getElementById('rootpass2').style.background = '{0}';".format(color))
             return True
+        elif scheme == 'chgmaquina':
+            self.maquina = path
+            return True
         elif scheme == 'btnaceptar':
             print "aceptando"
             if self.nombre == '':
@@ -229,33 +232,21 @@ class frmMain(gtk.Window):
         os.system('chmod 644 /home/{0}/.face'.format(usr))
         
     def hostname(self):
-        cmd = 'echo {0} > /etc/hostname'.format(self.maquina)
-        os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
+        w = open('/etc/hostname', 'w')
+        w.write('{0}\n'.format(self.maquina))
+        w.close()
 
-        cmd = 'echo 127.0.0.1\t\t{0}\t\tlocalhost > /etc/hosts'.format(self.maquina)
-        os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
-        cmd = 'echo ::1\t\tlocalhost\t\tip6-localhost ip6-loopback >> /etc/hosts'
-        os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
-        cmd = 'echo fe00::0\t\tip6-localnet >> /etc/hosts'
-        os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
-        cmd = 'echo ff00::0\t\tip6-mcastprefix >> /etc/hosts'
-        os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
-        cmd = 'echo ff02::1\t\tip6-allnodes >> /etc/hosts'
-        os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
-        cmd = 'echo ff02::2\t\tip6-allrouters >> /etc/hosts'
-        os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
-        cmd = 'echo ff02::3\t\tip6-allhosts" >> /etc/hosts'
-        os.system('{0}'.format(cmd))
-        os.system('echo {0} >> /var/log/c-p-p.log'.format(cmd))
+        w = open('/etc/hosts', 'w')
+        w.write('127.0.0.1\t\t{0}\t\tlocalhost\n'.format(self.maquina))
+        w.write('::1\t\tlocalhost\t\tip6-localhost ip6-loopback\n')
+        w.write('fe00::0\t\tip6-localnet\n')
+        w.write('ff00::0\t\tip6-mcastprefix\n')
+        w.write('ff02::1\t\tip6-allnodes\n')
+        w.write('ff02::2\t\tip6-allrouters\n')
+        w.write('ff02::3\t\tip6-allhosts\n')
+        w.close()
         
-        os.system('/etc/init.d/hostname.sh start')
+        #os.system('/etc/init.d/hostname.sh start')
         
 def main():
     '''

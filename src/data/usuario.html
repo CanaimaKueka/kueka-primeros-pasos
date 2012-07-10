@@ -197,7 +197,7 @@
                 <hr>
                 <p>
                     <label for="maquina">Nombre de la máquina</label>
-                    <input id="maquina" type="text" />
+                    <input id="maquina" type="text" onKeyUp="location.href='chgmaquina://'+this.value" />
                 </p>
                 <p id="botonera">
                     <input style="float:left; margin-left: 10px;" type="button" value="Modo OEM" onclick="location.href='btnmantenimiento://'+this.value" />
