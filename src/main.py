@@ -40,14 +40,14 @@ class frmMain(gtk.Window):
         gtk.Window.set_position(self, gtk.WIN_POS_CENTER_ALWAYS)
         self.set_size_request(600, 440)
         self.set_decorated(False)
-        
+
         self.visor = webkit.WebView()
         self.visor.set_size_request(590, 280)
         self.visor.connect("navigation-requested", self.on_navigation_requested)
         self.add(self.visor)
         self.face = "/usr/share/pixmaps/faces/leaf.jpg"
-        
-        path = os.path.realpath(os.path.join(os.path.dirname(__file__), 
+
+        path = os.path.realpath(os.path.join(os.path.dirname(__file__),
                 'data/usuario.html'))
         self.visor.open(path)
 
@@ -55,7 +55,7 @@ class frmMain(gtk.Window):
 
     def on_navigation_requested(self, view, frame, req, data=None):
         uri = req.get_uri()
-        scheme, path=uri.split('://', 1)
+        scheme, path = uri.split('://', 1)
         #print uri, scheme, path
         if scheme == 'btnapagar':
             self.visor.execute_script("document.getElementById('apagar').style.visibility = 'visible';")
@@ -90,7 +90,7 @@ class frmMain(gtk.Window):
             return True
         elif scheme == 'chgnombre':
             self.nombre = path.replace('%20', ' ')
-            print self.nombre, path
+            print self.nombre, path, uri
             nombre = path.split('%20')
             if len(nombre) == 1:
                 usuario = nombre[0]
@@ -145,14 +145,14 @@ class frmMain(gtk.Window):
                 self.mensaje("Debe escribir un nombre de usuario")
             elif self.pass1 == '':
                 self.mensaje("La contraseña del usuario no puede quedar en blanco")
-            elif len(self.pass1) <= 6:
-                self.mensaje("La contraseña de usuario debe tener más de 6 caracteres, se recomienda el uso de mayúsculas, minúsculas, números, y caracteres especiales como @#$%")
+            elif len(self.pass1) < 4:
+                self.mensaje("La contraseña de usuario debe tener mínimo 4 caracteres, se recomienda el uso de mayúsculas, minúsculas, números, y caracteres especiales como @#$%")
             elif self.pass1 != self.pass2:
                 self.mensaje("Las contraseñas de usuario no coinciden")
             elif self.passroot1 == '':
                 self.mensaje("La contraseña de root no puede quedar en blanco")
-            elif len(self.passroot1) <= 6:
-                self.mensaje("La contraseña de root debe tener más de 6 caracteres, se recomienda el uso de mayúsculas, minúsculas, números, y caracteres especiales como @#$%")
+            elif len(self.passroot1) < 4:
+                self.mensaje("La contraseña de root debe tener mínimo 4 caracteres, se recomienda el uso de mayúsculas, minúsculas, números, y caracteres especiales como @#$%")
             elif self.passroot1 != self.passroot2:
                 self.mensaje("Las contraseñas de root no coinciden")
             else:
@@ -165,21 +165,21 @@ class frmMain(gtk.Window):
             return True
         else:
             return False
-        
+
     def mensaje(self, msg):
         self.visor.execute_script("document.getElementById('msgbox').style.visibility = 'visible';")
-        self.visor.execute_script("document.getElementById('message').innerHTML = '"+msg+"';")
+        self.visor.execute_script("document.getElementById('message').innerHTML = '" + msg + "';")
 
     def verificar_fortaleza(self, password):
         strenght = 0
-        if len(password) > 6:
+        if len(password) >= 4:
             strenght += 1
         for p in PATTERNS:
             exist = p.search(password)
             if exist:
                 strenght += 1
         return strenght
-        
+
     def mantenimiento(self, widget=None):
         w = open('/tmp/oem', 'w')
         w.write('mantenimiento')
@@ -194,10 +194,10 @@ class frmMain(gtk.Window):
         os.system('aptitude purge canaima-primeros-pasos --assume-yes')
         w.close()
         gtk.main_quit()
-        
+
     def facelist(self):
-        path="/usr/share/pixmaps/faces"
-        dirList=os.listdir(path)
+        path = "/usr/share/pixmaps/faces"
+        dirList = os.listdir(path)
         lst = ''
         for fname in dirList:
             lst = lst + '<a href="btnavatar://{0}"><img class="face" src="/usr/share/pixmaps/faces/{0}" /></a> '.format(fname)
@@ -216,7 +216,7 @@ class frmMain(gtk.Window):
         os.system('/usr/sbin/adduser {0} video'.format(usr))
         os.system('/usr/sbin/adduser {0} plugdev'.format(usr))
         os.system('/usr/sbin/adduser {0} admin'.format(usr))
-        
+
         os.system('echo "{0}:{1}" > /tmp/passwd'.format(self.usuario, self.pass1))
         os.system('/usr/sbin/chpasswd < /tmp/passwd')
         os.system('rm -f /tmp/passwd')
@@ -224,13 +224,13 @@ class frmMain(gtk.Window):
         os.system('echo "root:{0}" > /tmp/passwd'.format(self.passroot1))
         os.system('/usr/sbin/chpasswd < /tmp/passwd')
         os.system('rm -f /tmp/passwd')
-        
+
         os.system('aptitude purge canaima-instalador --assume-yes')
-        
+
         os.system('mv {0} /home/{1}/.face'.format(self.face, usr))
         os.system('chown {0}:{0} /home/{0}/.face'.format(usr))
         os.system('chmod 644 /home/{0}/.face'.format(usr))
-        
+
     def hostname(self):
         w = open('/etc/hostname', 'w')
         w.write('{0}\n'.format(self.maquina))
@@ -245,9 +245,7 @@ class frmMain(gtk.Window):
         w.write('ff02::2\t\tip6-allrouters\n')
         w.write('ff02::3\t\tip6-allhosts\n')
         w.close()
-        
-        #os.system('/etc/init.d/hostname.sh start')
-        
+
 def main():
     '''
         Inicia la parte gráfica
